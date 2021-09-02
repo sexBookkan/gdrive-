@@ -1,35 +1,11 @@
-<?php
-/*
-    Version: 1.2.0
-    Author: HKLCF
-    Copyright: HKLCF
-    Last Modified: 23/05/2018
-*/
+<html> <title> JIO TV SCRIPT  </title>
 
-$url = isset($_GET['url']) ? htmlspecialchars($_GET['url']) : null;
-$support_domain = 'www.mediafire.com';
+Need help let me know..  <br>
+  To watch a channel on localhost you can watch channels directly in HD and SD <br>
+  
 
-if(empty($url)) {
-  $url = 'http://www.mediafire.com/file/8x5ol3r8wpb477a/small.mp4'; // sample link
-}
-if($url) {
-  preg_match('@^(?:http.?://)?([^/]+)@i', $url, $matches);
-  $host = $matches[1];
-  if($host != $support_domain) {
-    echo 'Please input a valid mediafire url.';
-    exit;
-  }
-}
+<a href="http://localhost/hd.php?c=AXN_HD"target="_blank">AXN HD high<a> | 
+<a href="http://localhost/sd.php?c=AXN_HD"target="_blank">AXN HD low<a> | <br>
 
-$result = file_get_contents($url, false, stream_context_create(['socket' => ['bindto' => '0:0']])); // force IPv4
-
-preg_match('/kNO = "(.*)"/', $result, $matches);
-$result = urldecode($matches[1]);
-
-$output = [];
-$output[] = ['label' => 'Original', 'file' => $result, 'type' => 'video/mp4'];
-
-$output = json_encode($output);
-
-echo $output;
-?>
+You can change localhost to IP / Domain of your server if you want to watch on VPS <br> 
+Regards 
